@@ -52,68 +52,68 @@ document.querySelectorAll('a[href^="#"]').forEach(link=>{
    gradient card until your real image is ready. */
 const flyers = [
   {
-    title: "International Yoga Day Camp",
-    desc: "Free community yoga sessions marking International Yoga Day, open to all age groups.",
-    tag: "Camp",
+    title: "FLYER1",
+    desc: "",
+    tag: "Health Camp",
     icon: "om",
     grad: "linear-gradient(160deg,#0F2038,#2FD6A3)",
-    image: ""   /* <<< PUT IMAGE 1 LINK HERE, e.g. "images/flyer-1.jpg" */
+    image: "nmw1 copy.png"   /* <<< PUT IMAGE 1 LINK HERE, e.g. "images/flyer-1.jpg" */
   },
   {
-    title: "Ayurveda Health Checkup Camp",
-    desc: "Complimentary Ayurvedic health screenings and consultations by certified practitioners.",
+    title: "FLYER2",
+    desc: "",
     tag: "Health Camp",
     icon: "leaf",
     grad: "linear-gradient(160deg,#0B1120,#164A3C)",
-    image: ""   /* <<< PUT IMAGE 2 LINK HERE, e.g. "images/flyer-2.jpg" */
+    image: "nmw2 copy.png"   /* <<< PUT IMAGE 2 LINK HERE, e.g. "images/flyer-2.jpg" */
   },
   {
-    title: "Patanjali Product Launch",
-    desc: "Introducing new Patanjali Ayurveda products, now available at the Hubli store.",
-    tag: "Launch",
+    title: "FLYER3",
+    desc: "",
+    tag: "Health Camp",
     icon: "star",
     grad: "linear-gradient(160deg,#111B33,#5AA8FF)",
-    image: ""   /* <<< PUT IMAGE 3 LINK HERE, e.g. "images/flyer-3.jpg" */
+    image: "nmw3 copy.png"   /* <<< PUT IMAGE 3 LINK HERE, e.g. "images/flyer-3.jpg" */
   },
   {
-    title: "Free Health Consultation Drive",
-    desc: "One-on-one consultations with Ayurveda experts — no appointment necessary.",
-    tag: "Consultation",
+    title: "FLYER4",
+    desc: "",
+    tag: "Health Camp",
     icon: "pulse",
     grad: "linear-gradient(160deg,#0B1120,#2C5B8F)",
-    image: ""   /* <<< PUT IMAGE 4 LINK HERE, e.g. "images/flyer-4.jpg" */
+    image: "nmw4 copy.png"   /* <<< PUT IMAGE 4 LINK HERE, e.g. "images/flyer-4.jpg" */
   },
   {
-    title: "Yoga & Wellness Workshop",
-    desc: "A weekend workshop covering breathing techniques, posture and mindful living.",
-    tag: "Workshop",
+    title: "FLYER5",
+    desc: "",
+    tag: "Health Camp",
     icon: "lotus",
     grad: "linear-gradient(160deg,#070B14,#1E3E6E)",
-    image: ""   /* <<< PUT IMAGE 5 LINK HERE, e.g. "images/flyer-5.jpg" */
+    image: "nmw5 copy.png"   /* <<< PUT IMAGE 5 LINK HERE, e.g. "images/flyer-5.jpg" */
   },
   {
-    title: "Ayurvedic Immunity Booster Camp",
-    desc: "Learn immunity-boosting Ayurvedic routines and take home a starter kit.",
+    title: "FLYER6",
+    desc: "",
     tag: "Camp",
     icon: "leaf",
     grad: "linear-gradient(160deg,#123A2E,#2FD6A3)",
-    image: ""   /* <<< PUT IMAGE 6 LINK HERE, e.g. "images/flyer-6.jpg" */
+    image: "nmw6 copy.png"   /* <<< PUT IMAGE 6 LINK HERE, e.g. "images/flyer-6.jpg" */
   },
   {
-    title: "Swadeshi Mela — Patanjali Store",
-    desc: "A community mela celebrating Swadeshi products, crafts and Ayurveda essentials.",
-    tag: "Community",
+    title: "FLYER7",
+    desc: "",
+    tag: "Health Camp",
     icon: "star",
     grad: "linear-gradient(160deg,#0B1120,#F0B65C22)",
-    image: ""   /* <<< PUT IMAGE 7 LINK HERE, e.g. "images/flyer-7.jpg" */
+    image: "nmw7 copy.png"   /* <<< PUT IMAGE 7 LINK HERE, e.g. "images/flyer-7.jpg" */
   },
   {
-    title: "Community Wellness Awareness",
-    desc: "An awareness drive on holistic wellness for families across Hubli‑Dharwad.",
-    tag: "Awareness",
+    title: "FLYER8",
+    desc: "",
+    tag: "",
     icon: "pulse",
     grad: "linear-gradient(160deg,#111B33,#2C5B8F)",
-    image: ""   /* <<< PUT IMAGE 8 LINK HERE, e.g. "images/flyer-8.jpg" */
+    image: "nmw8 copy.png"   /* <<< PUT IMAGE 8 LINK HERE, e.g. "images/flyer-8.jpg" */
   }
 ];
 const icons = {
