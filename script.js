@@ -57,7 +57,7 @@ const flyers = [
     tag: "Camp",
     icon: "om",
     grad: "linear-gradient(160deg,#0F2038,#2FD6A3)",
-    image: "nmw1 copy.png"   /* <<< PUT IMAGE 1 LINK HERE, e.g. "images/flyer-1.jpg" */
+    image: ""   /* <<< PUT IMAGE 1 LINK HERE, e.g. "images/flyer-1.jpg" */
   },
   {
     title: "Ayurveda Health Checkup Camp",
@@ -128,17 +128,36 @@ function posterHTML(f, full){
      field in the flyers array above, show that image instead of
      the placeholder gradient composition. */
   if(f.image){
-    return `<div class="${full?'poster-full':'poster'}" style="${full?'width:100%; padding-top:0; align-items:stretch;':'padding-top:0;'}">
+    if(full){
+      /* Fullscreen viewer: image is centered and scaled to fit
+         entirely inside the modal — no scrollbars, whole flyer
+         visible at once. Zoom (⤢ button) scales it up from here. */
+      return `<img src="${f.image}" alt="${f.title} — Patanjali Wellness Hubli flyer">`;
+    }
+    /* Small gallery card preview: cropped cover image, unaffected by this change. */
+    return `<div class="poster" style="padding-top:0;">
       <img src="${f.image}" alt="${f.title} — Patanjali Wellness Hubli flyer" loading="lazy"
-           style="width:100%; height:100%; object-fit:${full?'contain':'cover'}; ${full?'':'position:absolute; inset:0;'}">
+           style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0;">
     </div>`;
   }
   /* Placeholder composition — shown until a real flyer image is added above. */
-  return `<div class="${full?'poster-full':'poster'}" style="background:${f.grad}; ${full?'width:100%;':''}">
+  if(full){
+    /* Fullscreen viewer placeholder: everything centered inside one
+       fixed-size panel, so it fits on screen with no scrolling. */
+    return `<div class="poster-full" style="background:${f.grad};">
+      <div class="poster-full-inner">
+        ${icons[f.icon]}
+        <div class="poster-full-title">${f.title}</div>
+        <div class="poster-full-sub">${f.tag} · Patanjali Wellness Hubli</div>
+        <div class="poster-full-note">This is a placeholder composition. Add your real flyer image to the <code>image</code> field for this flyer in script.js and it will appear here, scaled to fit, with zoom.</div>
+      </div>
+    </div>`;
+  }
+  /* Small gallery card preview placeholder (unchanged). */
+  return `<div class="poster" style="background:${f.grad};">
     ${icons[f.icon]}
-    <div class="poster-title" style="${full?'top:150px; font-size:27px;':''}">${f.title}</div>
-    <div class="poster-sub" style="${full?'bottom:auto; top:210px;':''}">${f.tag} · Patanjali Wellness Hubli</div>
-    ${full?'<div style="margin-top:340px; color:rgba(255,255,255,.55); font-size:12px; text-align:center; padding:0 40px; max-width:520px;">This is a placeholder composition. Drop your real flyer image into the `flyers` array (image: "/path/to/flyer.jpg") and it will render here at full resolution with zoom.</div>':''}
+    <div class="poster-title">${f.title}</div>
+    <div class="poster-sub">${f.tag} · Patanjali Wellness Hubli</div>
   </div>`;
 }
 /* Builds one .flyer-card element per entry in the `flyers` array
