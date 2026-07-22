@@ -5,32 +5,61 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Patanjali Wellness Hubli — Flyers | MWB Technologies</title>
 <meta name="description" content="A premium curated gallery of the official Patanjali Wellness Hubli promotional flyers, presented by MWB Technologies India Pvt Ltd.">
+
+<!-- ============================================================
+     FAVICON / TAB ICON
+     Add your favicon file here, e.g.:
+     <link rel="icon" type="image/png" href="images/favicon.png">
+     ============================================================ -->
+
+<!-- ============================================================
+     SOCIAL SHARE / OG IMAGE (shown when the link is shared on
+     WhatsApp, Facebook, etc.) — add the image link here:
+     <meta property="og:image" content="images/og-cover.jpg">
+     ============================================================ -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- GSAP: powers all scroll/hover animations -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<!-- Lenis: powers the smooth/buttery scrolling -->
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- ============================================================
+     AMBIENT BACKGROUND LAYER
+     Fixed full-page layer sitting behind everything: the three
+     soft blurred "blob" glows, a subtle grain/noise texture, and
+     the falling-snow canvas. Purely decorative — no images needed.
+     ============================================================ -->
 <div class="ambient" aria-hidden="true">
-  <div class="blob blob-a" id="blobA"></div>
-  <div class="blob blob-b" id="blobB"></div>
-  <div class="blob blob-c" id="blobC"></div>
-  <div class="noise"></div>
-  <canvas id="snow"></canvas>
+  <div class="blob blob-a" id="blobA"></div>  <!-- top-left emerald glow -->
+  <div class="blob blob-b" id="blobB"></div>  <!-- right-side azure glow -->
+  <div class="blob blob-c" id="blobC"></div>  <!-- bottom amber glow -->
+  <div class="noise"></div>                   <!-- fine grain texture overlay -->
+  <canvas id="snow"></canvas>                 <!-- animated falling snow -->
 </div>
 
+<!-- ============================================================
+     SITE HEADER / STICKY NAVIGATION BAR
+     ============================================================ -->
 <header>
   <div class="container nav-wrap">
+    <!-- Logo + brand name. Currently "MWB" text on a gradient box.
+         To use a real logo image instead, replace the
+         <span class="logo-mark">MWB</span> below with:
+         <img src="images/logo.png" alt="MWB Technologies logo" class="logo-mark"> -->
     <a href="#top" class="logo">
       <span class="logo-mark">MWB</span>
       <span>MWB Technologies
         <span class="logo-sub">Patanjali Wellness Hubli</span>
       </span>
     </a>
+    <!-- Main desktop navigation links -->
     <nav>
       <ul>
         <li><a href="#flyers">Flyers</a></li>
@@ -39,13 +68,19 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
+    <!-- Desktop-only call-to-action button -->
     <div class="nav-cta"><a href="#flyers" class="btn-glass btn-primary">Browse Flyers →</a></div>
+    <!-- Mobile hamburger menu trigger -->
     <button class="hamburger" aria-label="Open menu" onclick="document.getElementById('mnav').classList.add('open')">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
+<!-- ============================================================
+     MOBILE FULL-SCREEN NAVIGATION OVERLAY
+     Hidden by default, opens when the hamburger button is clicked.
+     ============================================================ -->
 <div id="mnav">
   <div class="mtop">
     <span class="logo"><span class="logo-mark">MWB</span> MWB Technologies</span>
@@ -60,6 +95,12 @@
 </div>
 
 <main>
+<!-- ============================================================
+     HERO SECTION
+     Top-of-page introduction: eyebrow tag, big headline, lead
+     paragraph, two CTA buttons, and quick stats row.
+     Purely text/CSS — no image required here.
+     ============================================================ -->
 <section class="hero" id="top">
   <div class="container">
     <div class="eyebrow hero-el"><span class="dot"></span> Patanjali Wellness · Hubli‑Dharwad</div>
@@ -77,6 +118,14 @@
   </div>
 </section>
 
+<!-- ============================================================
+     FLYER GALLERY SECTION
+     The section heading below is static HTML, but the actual
+     flyer cards (#flyerGrid) are built dynamically by script.js
+     from the `flyers` array — that is also where you add each
+     flyer's real image link. See script.js for the exact spot
+     (search for "IMAGE LINK GOES HERE").
+     ============================================================ -->
 <section class="section" id="flyers">
   <div class="container">
     <div class="sec-head reveal">
@@ -84,18 +133,29 @@
       <h2>Patanjali Wellness Hubli — Flyers</h2>
       <p>A quick peek at every design. Tap any card to open the full flyer in high resolution, zoom in on the details, and download it.</p>
     </div>
+    <!-- Flyer cards are injected here by script.js (do not add images inside this empty div directly) -->
     <div class="flyer-grid" id="flyerGrid"></div>
   </div>
 </section>
 
+<!-- ============================================================
+     ABOUT SECTION
+     Two-column layout: written copy on the left (slides in from
+     left on scroll), glass "stat card" on the right (slides in
+     from right on scroll).
+     ============================================================ -->
 <section class="section" id="about">
   <div class="container">
     <div class="about-grid">
+      <!-- LEFT COLUMN: company description + service list. Text only, no image needed.
+           If you'd like a team/office photo here, you could add e.g.:
+           <img src="images/mwb-office.jpg" alt="MWB Technologies office" style="border-radius:20px; margin-top:24px;"> -->
       <div class="about-copy reveal-left">
         <div class="eyebrow"><span class="dot"></span> Who we are</div>
         <h2>MWB Technologies India Pvt Ltd</h2>
         <p>Based in Hubli‑Dharwad, Karnataka, MWB Technologies builds Desktop, Web and Mobile software that is simple, intuitive and scalable — made for traders, retailers, distributors, manufacturers and small businesses who are ready to grow with technology.</p>
         <p><strong style="color:var(--ink)">Our mission</strong> is to help retail, distribution and manufacturing businesses adopt technology and stay competitive — this flyer gallery for Patanjali Wellness Hubli is one small way we support community initiatives in our home city.</p>
+        <!-- Grid of 8 service tags -->
         <div class="service-list">
           <div class="service-item"><span class="chip"></span>Desktop Solutions</div>
           <div class="service-item"><span class="chip"></span>Web Solutions</div>
@@ -107,6 +167,7 @@
           <div class="service-item"><span class="chip"></span>Ongoing Support</div>
         </div>
       </div>
+      <!-- RIGHT COLUMN: glass "founded in 2019" stat card. No image needed — purely typographic. -->
       <div class="about-card reveal-right">
         <div class="eyebrow" style="background:rgba(255,255,255,0.08); color:#fff; border-color:var(--border);"><span class="dot"></span> Founded</div>
         <div class="yr">2019</div>
@@ -123,6 +184,13 @@
   </div>
 </section>
 
+<!-- ============================================================
+     "WHY CHOOSE MWB" SECTION
+     Heading is static; the 6 feature cards (#whyGrid) are built
+     dynamically by script.js from the `whyItems` array. Each card
+     uses a text/emoji icon, not an image, so no image link needed
+     unless you want to swap icons for real image icons.
+     ============================================================ -->
 <section class="section" id="why">
   <div class="container">
     <div class="sec-head reveal">
@@ -130,26 +198,40 @@
       <h2>Software people actually enjoy using</h2>
       <p>The same care that goes into our products goes into everything we build — including this gallery.</p>
     </div>
+    <!-- Why-choose cards are injected here by script.js -->
     <div class="why-grid" id="whyGrid"></div>
   </div>
 </section>
 </main>
 
+<!-- ============================================================
+     SITE FOOTER
+     Three columns: brand + blurb + social icons, company links,
+     gallery links + location. Fades upward into view on scroll.
+     ============================================================ -->
 <footer id="contact">
   <div class="container">
     <div class="footer-grid reveal-up">
+      <!-- COLUMN 1: brand mark, blurb, social icons.
+           Logo mark reused here — same note as header: replace
+           <span class="logo-mark">MWB</span> with an <img> tag if
+           you have a real logo file. -->
       <div>
         <div class="flogo">
           <span class="logo-mark">MWB</span>
           <strong style="color:#fff; font-size:16px; font-family:'Fraunces',serif; font-weight:600;">MWB Technologies India Pvt Ltd</strong>
         </div>
         <p>Empowering traders, merchants, retailers, distributors, manufacturers and small businesses with simple, scalable software. This gallery presents the Patanjali Wellness Hubli promotional flyers.</p>
+        <!-- Social icons: currently plain letters/glyphs. Point each
+             href at your real profile URL, and optionally swap the
+             text (f / ◎ / in) for <img src="images/icon-facebook.svg"> etc. -->
         <div class="social-row">
           <a href="#" aria-label="Facebook">f</a>
           <a href="#" aria-label="Instagram">◎</a>
           <a href="#" aria-label="LinkedIn">in</a>
         </div>
       </div>
+      <!-- COLUMN 2: company links -->
       <div>
         <h4>Company</h4>
         <ul>
@@ -158,6 +240,7 @@
           <li><a href="#why">Why Choose Us</a></li>
         </ul>
       </div>
+      <!-- COLUMN 3: gallery links + location -->
       <div>
         <h4>Gallery</h4>
         <ul>
@@ -168,6 +251,7 @@
         <ul><li style="color:rgba(255,255,255,0.65); font-size:14px;">Hubli‑Dharwad, Karnataka, India</li></ul>
       </div>
     </div>
+    <!-- Bottom copyright bar -->
     <div class="footer-bottom">
       <span>© <span id="yr"></span> MWB Technologies India Pvt Ltd. All rights reserved.</span>
       <span>Patanjali Wellness Hubli — Flyer Gallery</span>
@@ -175,6 +259,13 @@
   </div>
 </footer>
 
+<!-- ============================================================
+     FULLSCREEN FLYER VIEWER (MODAL)
+     Hidden by default. Opens when a flyer card's "View Full
+     Flyer" button is clicked. #modalCanvas is filled dynamically
+     by script.js with the full-size flyer (same place the real
+     flyer image link goes — see script.js "IMAGE LINK GOES HERE").
+     ============================================================ -->
 <div id="modal" role="dialog" aria-modal="true" aria-label="Flyer viewer">
   <div class="modal-inner" id="modalInner">
     <div class="modal-top">
@@ -185,6 +276,7 @@
       </div>
     </div>
     <button class="icon-btn modal-nav prev" id="prevBtn" aria-label="Previous flyer">←</button>
+    <!-- Full-size flyer image/poster renders here -->
     <div class="modal-canvas" id="modalCanvas"></div>
     <button class="icon-btn modal-nav next" id="nextBtn" aria-label="Next flyer">→</button>
     <div class="modal-controls">
