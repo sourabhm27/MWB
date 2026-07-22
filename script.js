@@ -1,4 +1,17 @@
-document.getElementById('yr').textContent = new Date().getFullYear();
+/* ================================================================
+   script.js — Patanjali Wellness Hubli flyer gallery
+   Sections in this file:
+     1. Lenis smooth scroll setup
+     2. Flyer + "Why choose us" data (rendered into the page)
+     3. GSAP scroll-triggered animations
+     4. Magnetic card tilt + ambient background parallax
+     5. Falling snow canvas effect
+     6. Fullscreen flyer modal/viewer logic
+   To add real flyer images, jump to the `flyers` array below and
+   fill in each `image:` field — look for "IMAGE LINK GOES HERE".
+   ================================================================ */
+
+document.getElementById('yr').textContent = new Date().getFullYear(); // footer copyright year
 const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------------- LENIS SMOOTH SCROLL ---------------- */
@@ -29,15 +42,79 @@ document.querySelectorAll('a[href^="#"]').forEach(link=>{
 });
 
 /* ---------------- FLYER + WHY DATA ---------------- */
+/* ADD YOUR IMAGES HERE.
+   Each flyer below has its own "image:" line — put your image's
+   file path or URL between the quotes, for example:
+       image: "images/flyer-1.jpg"
+   or:
+       image: "https://yourdomain.com/flyers/flyer-1.jpg"
+   Leave it as "" (empty quotes) to keep showing the placeholder
+   gradient card until your real image is ready. */
 const flyers = [
-  {title:"International Yoga Day Camp", desc:"Free community yoga sessions marking International Yoga Day, open to all age groups.", tag:"Camp", grad:"linear-gradient(160deg,#0F2038,#2FD6A3)", icon:"om"},
-  {title:"Ayurveda Health Checkup Camp", desc:"Complimentary Ayurvedic health screenings and consultations by certified practitioners.", tag:"Health Camp", grad:"linear-gradient(160deg,#0B1120,#164A3C)", icon:"leaf"},
-  {title:"Patanjali Product Launch", desc:"Introducing new Patanjali Ayurveda products, now available at the Hubli store.", tag:"Launch", grad:"linear-gradient(160deg,#111B33,#5AA8FF)", icon:"star"},
-  {title:"Free Health Consultation Drive", desc:"One-on-one consultations with Ayurveda experts — no appointment necessary.", tag:"Consultation", grad:"linear-gradient(160deg,#0B1120,#2C5B8F)", icon:"pulse"},
-  {title:"Yoga & Wellness Workshop", desc:"A weekend workshop covering breathing techniques, posture and mindful living.", tag:"Workshop", grad:"linear-gradient(160deg,#070B14,#1E3E6E)", icon:"lotus"},
-  {title:"Ayurvedic Immunity Booster Camp", desc:"Learn immunity-boosting Ayurvedic routines and take home a starter kit.", tag:"Camp", grad:"linear-gradient(160deg,#123A2E,#2FD6A3)", icon:"leaf"},
-  {title:"Swadeshi Mela — Patanjali Store", desc:"A community mela celebrating Swadeshi products, crafts and Ayurveda essentials.", tag:"Community", grad:"linear-gradient(160deg,#0B1120,#F0B65C22)", icon:"star"},
-  {title:"Community Wellness Awareness", desc:"An awareness drive on holistic wellness for families across Hubli‑Dharwad.", tag:"Awareness", grad:"linear-gradient(160deg,#111B33,#2C5B8F)", icon:"pulse"}
+  {
+    title: "International Yoga Day Camp",
+    desc: "Free community yoga sessions marking International Yoga Day, open to all age groups.",
+    tag: "Camp",
+    icon: "om",
+    grad: "linear-gradient(160deg,#0F2038,#2FD6A3)",
+    image: "nmw1 copy.png"   /* <<< PUT IMAGE 1 LINK HERE, e.g. "images/flyer-1.jpg" */
+  },
+  {
+    title: "Ayurveda Health Checkup Camp",
+    desc: "Complimentary Ayurvedic health screenings and consultations by certified practitioners.",
+    tag: "Health Camp",
+    icon: "leaf",
+    grad: "linear-gradient(160deg,#0B1120,#164A3C)",
+    image: ""   /* <<< PUT IMAGE 2 LINK HERE, e.g. "images/flyer-2.jpg" */
+  },
+  {
+    title: "Patanjali Product Launch",
+    desc: "Introducing new Patanjali Ayurveda products, now available at the Hubli store.",
+    tag: "Launch",
+    icon: "star",
+    grad: "linear-gradient(160deg,#111B33,#5AA8FF)",
+    image: ""   /* <<< PUT IMAGE 3 LINK HERE, e.g. "images/flyer-3.jpg" */
+  },
+  {
+    title: "Free Health Consultation Drive",
+    desc: "One-on-one consultations with Ayurveda experts — no appointment necessary.",
+    tag: "Consultation",
+    icon: "pulse",
+    grad: "linear-gradient(160deg,#0B1120,#2C5B8F)",
+    image: ""   /* <<< PUT IMAGE 4 LINK HERE, e.g. "images/flyer-4.jpg" */
+  },
+  {
+    title: "Yoga & Wellness Workshop",
+    desc: "A weekend workshop covering breathing techniques, posture and mindful living.",
+    tag: "Workshop",
+    icon: "lotus",
+    grad: "linear-gradient(160deg,#070B14,#1E3E6E)",
+    image: ""   /* <<< PUT IMAGE 5 LINK HERE, e.g. "images/flyer-5.jpg" */
+  },
+  {
+    title: "Ayurvedic Immunity Booster Camp",
+    desc: "Learn immunity-boosting Ayurvedic routines and take home a starter kit.",
+    tag: "Camp",
+    icon: "leaf",
+    grad: "linear-gradient(160deg,#123A2E,#2FD6A3)",
+    image: ""   /* <<< PUT IMAGE 6 LINK HERE, e.g. "images/flyer-6.jpg" */
+  },
+  {
+    title: "Swadeshi Mela — Patanjali Store",
+    desc: "A community mela celebrating Swadeshi products, crafts and Ayurveda essentials.",
+    tag: "Community",
+    icon: "star",
+    grad: "linear-gradient(160deg,#0B1120,#F0B65C22)",
+    image: ""   /* <<< PUT IMAGE 7 LINK HERE, e.g. "images/flyer-7.jpg" */
+  },
+  {
+    title: "Community Wellness Awareness",
+    desc: "An awareness drive on holistic wellness for families across Hubli‑Dharwad.",
+    tag: "Awareness",
+    icon: "pulse",
+    grad: "linear-gradient(160deg,#111B33,#2C5B8F)",
+    image: ""   /* <<< PUT IMAGE 8 LINK HERE, e.g. "images/flyer-8.jpg" */
+  }
 ];
 const icons = {
   om:'<svg class="poster-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M8 9c1 3 4 3 4 0s-3-3-3-1 2 2 3 1 2-2 3 0-1 4-3 3"/></svg>',
@@ -47,6 +124,16 @@ const icons = {
   lotus:'<svg class="poster-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.4"><path d="M12 21c-5-2-8-6-8-10 3 0 6 2 8 5 2-3 5-5 8-5 0 4-3 8-8 10z"/><path d="M12 11V3"/></svg>'
 };
 function posterHTML(f, full){
+  /* If a real image link has been added to this flyer's `image`
+     field in the flyers array above, show that image instead of
+     the placeholder gradient composition. */
+  if(f.image){
+    return `<div class="${full?'poster-full':'poster'}" style="${full?'width:100%; padding-top:0; align-items:stretch;':'padding-top:0;'}">
+      <img src="${f.image}" alt="${f.title} — Patanjali Wellness Hubli flyer" loading="lazy"
+           style="width:100%; height:100%; object-fit:${full?'contain':'cover'}; ${full?'':'position:absolute; inset:0;'}">
+    </div>`;
+  }
+  /* Placeholder composition — shown until a real flyer image is added above. */
   return `<div class="${full?'poster-full':'poster'}" style="background:${f.grad}; ${full?'width:100%;':''}">
     ${icons[f.icon]}
     <div class="poster-title" style="${full?'top:150px; font-size:27px;':''}">${f.title}</div>
@@ -54,6 +141,8 @@ function posterHTML(f, full){
     ${full?'<div style="margin-top:340px; color:rgba(255,255,255,.55); font-size:12px; text-align:center; padding:0 40px; max-width:520px;">This is a placeholder composition. Drop your real flyer image into the `flyers` array (image: "/path/to/flyer.jpg") and it will render here at full resolution with zoom.</div>':''}
   </div>`;
 }
+/* Builds one .flyer-card element per entry in the `flyers` array
+   above and drops it into <div id="flyerGrid"> in index.html. */
 const grid = document.getElementById('flyerGrid');
 flyers.forEach((f, i) => {
   const card = document.createElement('div');
@@ -71,6 +160,8 @@ flyers.forEach((f, i) => {
   grid.appendChild(card);
 });
 
+/* "Why choose us" feature cards — text + emoji icon only, no images used.
+   Edit the icon (i), title (t) or description (d) of any card here. */
 const whyItems = [
   {t:"Modern Software", d:"Built with current tools and practices — nothing dated, nothing clunky.", i:"✦"},
   {t:"Easy to Use", d:"Interfaces designed around how people actually work, not how systems are built.", i:"◎"},
@@ -79,6 +170,8 @@ const whyItems = [
   {t:"Secure", d:"Your data and your customers' data, handled with care.", i:"⛨"},
   {t:"Innovative", d:"We look for better ways to solve problems, not just familiar ones.", i:"◆"}
 ];
+/* Builds one .why-card element per entry in `whyItems` and drops
+   it into <div id="whyGrid"> in index.html. */
 const whyGrid = document.getElementById('whyGrid');
 whyItems.forEach(w=>{
   const el = document.createElement('div');
@@ -271,7 +364,18 @@ document.getElementById('nextBtn').onclick = ()=>{ current = (current+1)%flyers.
 document.getElementById('zoomBtn').onclick = ()=> modalCanvas.classList.toggle('zoomed');
 modalCanvas.onclick = (e)=>{ if(e.target===modalCanvas || e.target.closest('.poster-full')) modalCanvas.classList.toggle('zoomed'); };
 document.getElementById('downloadBtn').onclick = ()=>{
-  alert('Add a real flyer image (JPG/PNG) to enable downloads. This preview uses a placeholder composition.');
+  const f = flyers[current];
+  if(f.image){
+    /* Real image present: trigger an actual download */
+    const a = document.createElement('a');
+    a.href = f.image;
+    a.download = f.title.replace(/\s+/g,'-').toLowerCase() + '.jpg';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }else{
+    alert('Add a real flyer image link in script.js (the `image` field on this flyer) to enable downloads. This preview uses a placeholder composition.');
+  }
 };
 modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
 document.addEventListener('keydown', (e)=>{
